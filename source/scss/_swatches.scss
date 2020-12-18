@@ -1,0 +1,125 @@
+$swatches: (
+	rich-black: 	#0C0F0A,
+	ash-grey: 		#CAD5CA,
+	ghost-white: 	#F3F0F5,
+);
+
+@function color-name($swatch) {
+	@if not map-has-key($swatches, $swatch) {
+		
+		@error " '#{$swatch}' is not an valid swatch name, use one of '#{map-keys($swatches)}' "
+		
+	} @else {
+		
+		$value: map-get($swatches, $swatch);
+		@return $value;
+	
+	}
+}
+
+
+
+$alphas: (
+	none: 			1.0,
+	medium: 		0.3,
+	full: 			0.0,
+	
+	100:			1.0,
+	90:				0.9,
+	80:				0.8,
+	70:				0.7,
+	60:				0.6,
+	50:				0.5,
+	40:				0.4,
+	30:				0.3,
+	20:				0.2,
+	10:				0.1,
+	0:				0.0,
+	
+);
+
+@function opacity-preset($alpha: none) {
+	@if not map-has-key($alphas, $alpha) {
+		
+		@error " '#{$alpha}' is not an valid opacity preset, use one of '#{map-keys($alphas)}' "
+		
+	} @else {
+		
+		$value: map-get($alphas, $alpha);
+		
+		@return $value;
+	}
+}
+
+
+
+@function swatch($swatch, $alpha: none) {
+		
+	$value: transparentize( color-name($swatch), 1 - opacity-preset($alpha) );
+	
+	@return $value;
+		
+}
+
+
+
+@function swatch-rgb($swatch) {
+	
+	$valid-swatch: color-name($swatch);
+	
+	$value: 
+		red($valid-swatch), 
+		green($valid-swatch), 
+		blue($valid-swatch);
+	
+	@return $value;
+}
+
+@function swatch-rgba($swatch, $alpha: none) {
+	$value:
+		swatch-rgb($swatch),
+		opacity-preset($alpha);
+	
+	@return $value;
+}
+
+
+
+@function swatch-hsl($swatch) {
+	$valid-swatch: color-name($swatch);
+	
+	$value:
+		hue($valid-swatch), 
+		saturation($valid-swatch), 
+		lightness($valid-swatch);
+	
+	@return $value;
+}
+
+@function swatch-hsla($swatch, $alpha: none) {
+	$value:
+		swatch-hsl($swatch),
+		opacity-preset($alpha);
+	
+	@return $value;
+}
+
+:root {	
+		--background-swatch: 	#{swatch(rich-black)};
+		--background-rgb: 		#{swatch-rgb(rich-black)};
+		--background-hsl: 		#{swatch-hsl(rich-black)};
+		
+		--text-swatch: 			#{swatch(ash-grey)};
+		--text-rgb: 			#{swatch-rgb(ash-grey)};
+		--text-hsl: 			#{swatch-hsl(ash-grey)};
+		
+	@media (prefers-color-scheme: light) {
+		--background-swatch: 	#{swatch(ghost-white)};
+		--background-rgb: 		#{swatch-rgb(ghost-white)};
+		--background-hsl: 		#{swatch-hsl(ghost-white)};
+		
+		--text-swatch: 			#{swatch(rich-black)};
+		--text-rgb: 			#{swatch-rgb(rich-black)};
+		--text-hsl: 			#{swatch-hsl(rich-black)};
+	}
+}
