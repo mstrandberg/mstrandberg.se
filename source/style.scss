@@ -1,9 +1,9 @@
-@import "scss/swatches";
+@use "../node_modules/normalize.css/normalize";
 
-@import "../node_modules/normalize.css/normalize";
+@use "source/every-layout" as *;
 
-@import "source/every-layout";
-@import "source/position";
+@use "scss/swatches" as *;
+
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
@@ -213,7 +213,7 @@ nav {
 	font-family: $typeface-sans;
 
 	&Item {
-		@include layout(rows );
+		@include flow(inline);
 		@include gap-size(normal);
 		@include gap-flow(stack);
 		@include align(baseline);
@@ -290,9 +290,8 @@ nav {
 
 	&Item {
 		@media (orientation: portrait) {
-			@include layout(row);
+			@include flow(inline, start);
 			@include align(end);
-			@include justify(left);
 
 			ul {
 				min-width: 25%;
@@ -300,7 +299,7 @@ nav {
 			}
 
 			div {
-				@include layout(stack);
+				@include flow(block);
 				@include align(start);
 
 				&:before {
@@ -321,14 +320,14 @@ nav {
 
 		}
 		@media (orientation: landscape) {
-			@include layout(stack);
-			@include align(end);
-			@include justify(center);
+			@include flow(block, center);
+			@include align(fill);
+			
 
 			box-shadow: 2px 0 0 rgba( var(--text-rgb), opacity-preset(medium) );
 
 			div {
-				@include layout(stack);
+				@include flow(block);
 				@include align(end);
 			}
 
@@ -342,7 +341,7 @@ nav {
 
 
 		div {
-			@include justify(end);
+			@include flow(end);
 
 			&:before {
 				width: 2em;
@@ -363,20 +362,17 @@ nav {
 
 		ul {
 			@media (orientation: portrait) {
-				@include layout(stack);
-				@include justify(end);
+				@include flow(block, end);
 
 
 				li {
 					padding: 1em 0;
 					margin-bottom: 0.5em;
-					@include layout(stack);
-					@include justify(end);
+					@include flow(block, end);
 				}
 			}
 			@media (orientation: landscape) {
-				@include layout(row);
-				@include justify(end);
+				@include flow(inline, end);
 
 				margin-bottom: 1.5em;
 
