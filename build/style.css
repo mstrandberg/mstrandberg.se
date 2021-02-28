@@ -2,26 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap");
-:root {
-  --background-swatch:	#0c0f0a;
-  --background-rgb:	12, 15, 10;
-  --background-hsl:	96deg, 20%, 4.9019607843%;
-  --text-swatch:	#cad5ca;
-  --text-rgb:	202, 213, 202;
-  --text-hsl:	120deg, 11.5789473684%, 81.3725490196%;
-  /*		
-  	@media (prefers-color-scheme: light) {
-  		--background-swatch: 	#f3f0f5;
-  		--background-rgb: 		243, 240, 245;
-  		--background-hsl: 		276deg, 20%, 95.0980392157%;
-
-  		--text-swatch: 			#0c0f0a;
-  		--text-rgb: 			12, 15, 10;
-  		--text-hsl: 			96deg, 20%, 4.9019607843%;
-  	}
-  */
-}
-
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -105,7 +85,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -361,85 +342,245 @@ template {
   display: none;
 }
 
-.pad\:1, .pad\:box-1 {
-  padding: 1em;
+.flow\:block {
+  display: flex;
+  flex-direction: column;
 }
-.pad\:2, .pad\:box-2 {
-  padding: 2em;
-}
-.pad\:block, .pad\:block-1 {
-  padding-block: 1em;
-}
-.pad\:block-2 {
-  padding-block: 2em;
-}
-.pad\:inline, .pad\:inline-1 {
-  padding-inline: 1em;
-}
-.pad\:inline-2 {
-  padding-inline: 2em;
-}
-
-[class*="layout:"].space\:between {
-  justify-content: space-between;
-}
-[class*="layout:"].space\:around {
-  justify-content: space-around;
-}
-
-[class*="layout:"].align\:start {
-  align-items: flex-start;
-}
-[class*="layout:"].align\:center {
-  align-items: center;
-}
-[class*="layout:"].align\:end {
-  align-items: flex-end;
-}
-[class*="layout:"].align\:baseline {
-  align-items: baseline;
-}
-[class*="layout:"].align\:stretch {
-  align-items: stretch;
-}
-
-[class*="layout:"].justify\:start {
+.flow\:block\:start {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
 }
-[class*="layout:"].justify\:center {
+.flow\:block\:center {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
-[class*="layout:"].justify\:end {
+.flow\:block\:end {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end;
 }
-
-[class*="layout:row"] {
+.flow\:block\:fill {
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 }
-[class*="layout:row"] > * {
-  grid-column: 1/-1;
+.flow\:block\:fill > * {
+  flex: 1 1 0%;
 }
-
-[class*="layout:stack"] {
+.flow\:block\:justify {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  height: 100%;
+  justify-content: space-between;
 }
-[class*="layout:stack"] > * {
-  grid-row: 1/-1;
+.flow\:block\:distribute {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.flow\:inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flow\:inline\:start {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.flow\:inline\:center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.flow\:inline\:end {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.flow\:inline\:fill {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.flow\:inline\:fill > * {
+  flex: 1 1 0%;
+}
+.flow\:inline\:justify {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.flow\:inline\:distribute {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.flow\:line {
+  display: flex;
+  flex-direction: row;
+}
+.flow\:line\:start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.flow\:line\:center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.flow\:line\:end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.flow\:line\:fill {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flow\:line\:fill > * {
+  flex: 1 1 0%;
+}
+.flow\:line\:justify {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flow\:line\:distribute {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.flow\:start {
+  justify-content: flex-start;
+}
+.flow\:center {
+  justify-content: center;
+}
+.flow\:end {
+  justify-content: flex-end;
+}
+.flow\:fill {
+  justify-content: space-between;
+}
+.flow\:fill > * {
+  flex: 1 1 0%;
+}
+.flow\:justify {
+  justify-content: space-between;
+}
+.flow\:distribute {
+  justify-content: space-evenly;
 }
 
-[class*="layout:"][class*="(stacks)"] > :not([class*="layout:"]) {
-  display: inherit;
-  flex-direction: column;
+.align\:start {
+  align-items: flex-start;
+  align-content: flex-start;
 }
-[class*="layout:"][class*="(rows)"] > :not([class*="layout:"]) {
-  display: inherit;
-  flex-direction: row;
+.align\:center {
+  align-items: center;
+  align-content: center;
+}
+.align\:end {
+  align-items: flex-end;
+  align-content: flex-end;
+}
+.align\:fill {
+  align-items: stretch;
+  align-content: stretch;
+}
+.align\:baseline {
+  align-items: baseline;
+  align-content: baseline;
+}
+.align\:justify {
+  align-content: space-between;
+}
+.align\:distribute {
+  align-content: space-evenly;
+}
+
+.test {
+  padding-inline: 3em;
+}
+
+.pad\:box {
+  padding: 1em;
+}
+.pad\:box\:1 {
+  padding: 1em;
+}
+.pad\:box\:2 {
+  padding: 2em;
+}
+.pad\:box\:3 {
+  padding: 3em;
+}
+.pad\:box\:4 {
+  padding: 4em;
+}
+.pad\:box\:5 {
+  padding: 5em;
+}
+.pad\:block {
+  padding-block: 1em;
+}
+.pad\:block\:1 {
+  padding-block: 1em;
+}
+.pad\:block\:2 {
+  padding-block: 2em;
+}
+.pad\:block\:3 {
+  padding-block: 3em;
+}
+.pad\:block\:4 {
+  padding-block: 4em;
+}
+.pad\:block\:5 {
+  padding-block: 5em;
+}
+.pad\:inline {
+  padding-inline: 1em;
+}
+.pad\:inline\:1 {
+  padding-inline: 1em;
+}
+.pad\:inline\:2 {
+  padding-inline: 2em;
+}
+.pad\:inline\:3 {
+  padding-inline: 3em;
+}
+.pad\:inline\:4 {
+  padding-inline: 4em;
+}
+.pad\:inline\:5 {
+  padding-inline: 5em;
+}
+.pad\:1 {
+  padding: 1em;
+}
+.pad\:2 {
+  padding: 2em;
+}
+.pad\:3 {
+  padding: 3em;
+}
+.pad\:4 {
+  padding: 4em;
+}
+.pad\:5 {
+  padding: 5em;
 }
 
 [class*="layout:gap"], [class*="layout:gap"][class*="(normal)"] {
@@ -453,98 +594,43 @@ template {
 }
 [class*="layout:gap"][class*="layout:"][class*=stack] > * + * {
   margin-top: var(--gap);
-  margin-block-start: var(--gap);
+  -webkit-margin-before: var(--gap);
+          margin-block-start: var(--gap);
 }
 [class*="layout:gap"][class*="layout:"][class*="(stacks)"] > :not([class*="layout:"]) * + * + * {
   margin-top: var(--gap);
-  margin-block-start: var(--gap);
+  -webkit-margin-before: var(--gap);
+          margin-block-start: var(--gap);
 }
 [class*="layout:gap"][class*="layout:"][class*=row] > * + * {
   margin-left: var(--gap);
-  margin-inline-start: var(--gap);
+  -webkit-margin-start: var(--gap);
+          margin-inline-start: var(--gap);
 }
 [class*="layout:gap"][class*="layout:"][class*="(rows)"] > :not([class*="layout:"]) * + * + * {
   margin-left: var(--gap);
-  margin-inline-start: var(--gap);
+  -webkit-margin-start: var(--gap);
+          margin-inline-start: var(--gap);
 }
 
-.position\:absolute {
-  position: absolute;
-}
-.position\:absolute\:top {
-  position: absolute;
-  top: 0;
-}
-.position\:absolute\:bottom {
-  position: absolute;
-  bottom: 0;
-}
-.position\:absolute\:left {
-  position: absolute;
-  left: 0;
-}
-.position\:absolute\:right {
-  position: absolute;
-  right: 0;
-}
-.position\:fixed {
-  position: fixed;
-}
-.position\:fixed\:top {
-  position: fixed;
-  top: 0;
-}
-.position\:fixed\:bottom {
-  position: fixed;
-  bottom: 0;
-}
-.position\:fixed\:left {
-  position: fixed;
-  left: 0;
-}
-.position\:fixed\:right {
-  position: fixed;
-  right: 0;
-}
-.position\:sticky {
-  position: sticky;
-}
-.position\:sticky\:top {
-  position: sticky;
-  top: 0;
-}
-.position\:sticky\:bottom {
-  position: sticky;
-  bottom: 0;
-}
-.position\:sticky\:left {
-  position: sticky;
-  left: 0;
-}
-.position\:sticky\:right {
-  position: sticky;
-  right: 0;
-}
-.position\:relative {
-  position: relative;
-}
-.position\:static {
-  position: static;
-}
-.position\:inherit {
-  position: inherit;
-}
-.position\:top {
-  top: 0;
-}
-.position\:bottom {
-  bottom: 0;
-}
-.position\:left {
-  left: 0;
-}
-.position\:right {
-  right: 0;
+:root {
+  --background-swatch:	#0c0f0a;
+  --background-rgb:	12, 15, 10;
+  --background-hsl:	96deg, 20%, 4.9019607843%;
+  --text-swatch:	#cad5ca;
+  --text-rgb:	202, 213, 202;
+  --text-hsl:	120deg, 11.5789473684%, 81.3725490196%;
+  /*		
+  	@media (prefers-color-scheme: light) {
+  		--background-swatch: 	#f3f0f5;
+  		--background-rgb: 		243, 240, 245;
+  		--background-hsl: 		276deg, 20%, 95.0980392157%;
+
+  		--text-swatch: 			#0c0f0a;
+  		--text-rgb: 			12, 15, 10;
+  		--text-hsl: 			96deg, 20%, 4.9019607843%;
+  	}
+  */
 }
 
 .u-ephemeral {
@@ -677,12 +763,14 @@ aside {
   font-family: "DM Sans", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5em;
-  writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+      writing-mode: vertical-lr;
 }
 
 nav {
   padding: 0 11.1111111111vw;
   z-index: 1000;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   font-family: "DM Sans", sans-serif;
@@ -694,23 +782,44 @@ nav a {
   text-underline-offset: 0.5em;
 }
 
+.container\:overflow {
+  overflow: auto;
+  scrollbar-color: rgba(var(--text-rgb), 0.3) transparent;
+}
+.container\:overflow:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+.container\:overflow::-webkit-scrollbar {
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  height: 0.4em;
+  width: 0.4em;
+}
+.container\:overflow::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--text-rgb), 0.3);
+  border-radius: 100em;
+}
 @media (orientation: portrait) {
   .container\:overflow {
-    overflow: scroll;
     padding-block: 11.1111111111vh;
   }
 }
 @media (orientation: landscape) {
   .container\:overflow {
-    overflow: scroll;
     padding-inline: 22.2222222222vw;
     margin: 11.1111111111vh -22.2222222222vw;
   }
   .container\:overflow > * {
+    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
     min-width: min-content;
     padding-inline: inherit;
   }
   .container\:overflow > *.layout\:grid {
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
     min-width: max-content;
   }
 }
@@ -720,23 +829,17 @@ nav a {
 }
 .ClusterItem {
   display: flex;
-  align-items: center;
   flex-direction: row;
-  width: 100%;
+  flex-wrap: wrap;
   --gap: 1em;
   align-items: baseline;
+  align-content: baseline;
   white-space: nowrap;
-}
-.ClusterItem > * {
-  grid-column: 1/-1;
-}
-.ClusterItem > :not([class*="layout:"]) {
-  display: inherit;
-  flex-direction: row;
 }
 .ClusterItem + * {
   margin-top: var(--gap);
-  margin-block-start: var(--gap);
+  -webkit-margin-before: var(--gap);
+          margin-block-start: var(--gap);
 }
 .ClusterItem > * + * {
   opacity: 0.7;
@@ -779,27 +882,22 @@ nav a {
 @media (orientation: portrait) {
   .TimelineItem {
     display: flex;
-    align-items: center;
     flex-direction: row;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: flex-end;
-  }
-  .TimelineItem > * {
-    grid-column: 1/-1;
+    align-content: flex-end;
   }
   .TimelineItem ul {
     min-width: 25%;
     align-items: flex-end;
+    align-content: flex-end;
   }
   .TimelineItem div {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 100%;
     align-items: flex-start;
-  }
-  .TimelineItem div > * {
-    grid-row: 1/-1;
+    align-content: flex-start;
   }
   .TimelineItem div span:first-child {
     background-image: linear-gradient(to right, rgba(var(--text-rgb), 0.3) 0%, rgba(var(--text-rgb), 0.3) 100%);
@@ -811,25 +909,17 @@ nav a {
 @media (orientation: landscape) {
   .TimelineItem {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 100%;
-    align-items: flex-end;
     justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
     box-shadow: 2px 0 0 rgba(var(--text-rgb), 0.3);
-  }
-  .TimelineItem > * {
-    grid-row: 1/-1;
   }
   .TimelineItem div {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 100%;
     align-items: flex-end;
-  }
-  .TimelineItem div > * {
-    grid-row: 1/-1;
+    align-content: flex-end;
   }
   .TimelineItem > :first-child {
     margin-top: -0.3333333333em;
@@ -859,38 +949,24 @@ nav a {
 @media (orientation: portrait) {
   .TimelineItem ul {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 100%;
     justify-content: flex-end;
-  }
-  .TimelineItem ul > * {
-    grid-row: 1/-1;
   }
   .TimelineItem ul li {
     padding: 1em 0;
     margin-bottom: 0.5em;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 100%;
     justify-content: flex-end;
-  }
-  .TimelineItem ul li > * {
-    grid-row: 1/-1;
   }
 }
 @media (orientation: landscape) {
   .TimelineItem ul {
     display: flex;
-    align-items: center;
     flex-direction: row;
-    width: 100%;
+    flex-wrap: wrap;
     justify-content: flex-end;
     margin-bottom: 1.5em;
-  }
-  .TimelineItem ul > * {
-    grid-column: 1/-1;
   }
   .TimelineItem ul li {
     padding: 0 1em;
@@ -949,8 +1025,10 @@ figure img {
 }
 figure img + img {
   z-index: -1;
-  filter: blur(11vw) saturate(2);
-  object-fit: cover;
+  -webkit-filter: blur(11vw) saturate(2);
+          filter: blur(11vw) saturate(2);
+  -o-object-fit: cover;
+     object-fit: cover;
   position: absolute;
   transform: scale(1.2);
   opacity: 0.8;
