@@ -784,6 +784,10 @@ nav a {
 
 .container\:overflow {
   overflow: auto;
+  scrollbar-color: transparent transparent;
+  transition: all 0.5s ease-in-out;
+}
+.container\:overflow:hover {
   scrollbar-color: rgba(var(--text-rgb), 0.3) transparent;
 }
 .container\:overflow:hover::-webkit-scrollbar {
@@ -791,8 +795,6 @@ nav a {
 }
 .container\:overflow::-webkit-scrollbar {
   opacity: 0;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
   background-color: transparent;
   height: 0.4em;
   width: 0.4em;
