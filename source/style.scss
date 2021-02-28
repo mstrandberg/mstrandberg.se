@@ -441,7 +441,6 @@ nav {
 	list-style: disclosure-closed !important;
 	
 	::marker {
-		content: "❖ ";
-		transform: scale(0.25);
+		content: "◇\00a0\00a0";
 	}
 }
