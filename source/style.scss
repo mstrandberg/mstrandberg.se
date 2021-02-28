@@ -177,8 +177,27 @@ nav {
 .container {
 
 	&\:overflow {
+		overflow: auto;
+		scrollbar-color: rgba( var(--text-rgb), opacity-preset(medium) ) transparent;
+		
+		&:hover::-webkit-scrollbar {
+			opacity: 1;
+		}
+		&::-webkit-scrollbar {
+			opacity: 0;
+			transition: all 0.5s ease-in-out;
+			background-color: transparent;
+			height: 0.4em;
+			width: 0.4em;
+		}
+		
+		&::-webkit-scrollbar-thumb {
+			background-color: rgba( var(--text-rgb), opacity-preset(medium) );;
+			border-radius: 100em;
+		}
+		
 		@media (orientation: portrait) {
-			overflow: scroll;
+			
 			padding-block: (100/9)*1vh;
 
 
@@ -193,7 +212,6 @@ nav {
 
 
 		@media (orientation: landscape) {
-			overflow: scroll;
 			padding-inline: (100/9)*2vw;
 			margin: (100/9)*1vh (100/9)*-2vw;
 
