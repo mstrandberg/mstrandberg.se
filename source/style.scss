@@ -178,16 +178,37 @@ nav {
 
 
 .container {
+	& {
+		@media (orientation: portrait) {
+
+			padding-block: (100/9)*1vh;
+
+
+			> * {
+
+			}
+		}
+
+		@media (orientation: landscape) {
+			padding-inline: (100/9)*2vw;
+			margin: (100/9)*1vh (100/9)*-2vw;
+
+			> * {
+				min-width: min-content;
+				padding-inline: inherit;
+			}
+		}
+	}
 
 	&\:overflow {
 		overflow: auto;
 		scrollbar-color: transparent transparent;
 		transition: scrollbar-color 0.5s ease-in-out;
-		
-		&:hover { 
+
+		&:hover {
 			scrollbar-color: rgba( var(--text-rgb), opacity-preset(medium) ) transparent;
 		}
-		
+
 		&:hover::-webkit-scrollbar {
 			opacity: 1;
 		}
@@ -197,14 +218,14 @@ nav {
 			height: 0.4em;
 			width: 0.4em;
 		}
-		
+
 		&::-webkit-scrollbar-thumb {
-			background-color: rgba( var(--text-rgb), opacity-preset(medium) );;
+			background-color: rgba( var(--text-rgb), opacity-preset(medium) );
 			border-radius: 100em;
 		}
-		
+
 		@media (orientation: portrait) {
-			
+
 			padding-block: (100/9)*1vh;
 
 
@@ -264,11 +285,12 @@ nav {
 
 		display: grid;
 
-		@media (orientation: portrait) {
+		@media (orientation: portrait), (orientation: landscape) {
 			--lineOrientation: bottom;
 			background-position: 25% $alignment ;
 			background-size: ($thickness + px) ($dottedLineSpacing + px);
 			background-repeat: repeat-y;
+			background-origin: content-box;
 
 			grid-auto-rows: 1fr;
 			grid-auto-flow: row;
@@ -279,6 +301,7 @@ nav {
 				grid-row: span var(--span);
 			}
 		}
+		/*
 		@media (orientation: landscape) {
 			--lineOrientation: right;
 			background-position: 0 $alignment;
@@ -294,7 +317,7 @@ nav {
 				grid-column: span var(--span);
 			}
 		}
-
+		*/
 
 		background-image: linear-gradient(
 			to var(--lineOrientation),
@@ -314,7 +337,7 @@ nav {
 
 
 	&Item {
-		@media (orientation: portrait) {
+		@media (orientation: portrait) , (orientation: landscape) {
 			@include flow(inline, start);
 			@include align(end);
 
@@ -331,23 +354,26 @@ nav {
 					//content: "";
 				}
 
+				/*
 				span:first-child {
 					background-image: linear-gradient(
 						to right,
-						rgba( var(--text-rgb), opacity-preset(medium) ) 0%,
-						rgba( var(--text-rgb), opacity-preset(medium) ) 100%
+						rgba( var(--text-rgb), opacity-preset(none) ) 0%,
+						rgba( var(--text-rgb), opacity-preset(none) ) 100%
 					);
 					background-position: 0 center;
-					background-size: 1em 2px;
+					background-size: 0.75em 1px;
 					background-repeat: no-repeat
 				}
+				*/
 			}
 
 		}
+		/*
 		@media (orientation: landscape) {
 			@include flow(block, center);
 			@include align(fill);
-			
+
 
 			box-shadow: 2px 0 0 rgba( var(--text-rgb), opacity-preset(medium) );
 
@@ -363,15 +389,32 @@ nav {
 				margin-bottom: -(1/3)*1em;
 			}
 		}
-
+		*/
 
 		div {
 			@include flow(end);
+			max-width: 75%;
+			position: relative;
+
+			span {}
 
 			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
 				width: 2em;
-				height: 2px;
-				box-shadow: 0 2px 0 rgba( var(--text-rgb), opacity-preset(medium) ) ;
+				height: 1.5em;
+				padding: 0.2em;
+				background-image: linear-gradient(
+					to right,
+					rgba( var(--text-rgb), opacity-preset(none) ) 0%,
+					rgba( var(--text-rgb), opacity-preset(none) ) 100%
+				);
+				background-clip: content-box;
+				background-position: 0 center;
+				background-size: 1px 1px;
+				background-repeat: repeat-x;
+				translate: -50%;
 			}
 
 		}
@@ -386,16 +429,18 @@ nav {
 		}
 
 		ul {
-			@media (orientation: portrait) {
+			@media (orientation: portrait), (orientation: landscape) {
 				@include flow(block, end);
+				max-width: 25%;
 
 
 				li {
-					padding: 1em 0;
+					padding: 1em;
 					margin-bottom: 0.5em;
 					@include flow(block, end);
 				}
 			}
+			/*
 			@media (orientation: landscape) {
 				@include flow(inline, end);
 
@@ -405,7 +450,7 @@ nav {
 					padding: 0 1em;
 				}
 			}
-
+			*/
 
 			font-family: $typeface-mono;
 
@@ -446,7 +491,7 @@ nav {
 
 .liststyle\:arrows {
 	list-style: disclosure-closed !important;
-	
+
 	::marker {
 		content: "◇\00a0\00a0";
 	}
@@ -462,13 +507,13 @@ figure {
 	overflow: hidden;
 	padding: 11vw;
 	margin: 0;
-	
+
 	img {
 		width: 100%;
 		height: 100%;
 		box-shadow: 0 0 5.5vw rgba(0,0,0,0.25);
 	}
-	
+
 	img + img {
 		z-index: -1;
 		filter: blur(11vw) saturate(2);
