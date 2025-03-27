@@ -1,4 +1,4 @@
-$swatches: (
+ $swatches: (
 	rich-black: 	#0C0F0A,
 	ash-grey: 		#CAD5CA,
 	ghost-white: 	#F3F0F5,
@@ -112,7 +112,7 @@ $alphas: (
 		--text-swatch: 			#{swatch(ash-grey)};
 		--text-rgb: 			#{swatch-rgb(ash-grey)};
 		--text-hsl: 			#{swatch-hsl(ash-grey)};
-		
+/*		
 	@media (prefers-color-scheme: light) {
 		--background-swatch: 	#{swatch(ghost-white)};
 		--background-rgb: 		#{swatch-rgb(ghost-white)};
@@ -122,4 +122,5 @@ $alphas: (
 		--text-rgb: 			#{swatch-rgb(rich-black)};
 		--text-hsl: 			#{swatch-hsl(rich-black)};
 	}
+*/
 }
