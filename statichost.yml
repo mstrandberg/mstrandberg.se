@@ -1,0 +1,5 @@
+domains:
+  # Primary domain
+  - mstrandberg.se
+  # Domains that redirect to the primary
+  - www.mstrandberg.se
